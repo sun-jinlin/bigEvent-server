@@ -30,6 +30,8 @@ router.post('/login', async (req, res) => {
                 { expiresIn: '2days' }
             )
         })
+    } else {
+        res.send({ status: 1, message: '登录失败' })
     }
 })
 module.exports = router;

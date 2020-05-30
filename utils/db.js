@@ -4,7 +4,8 @@ module.exports = (sql, params = null) => {
         host: 'localhost',
         user: 'root',
         password: 'root',
-        database: 'bigevent'
+        database: 'bigevent',
+        timezone: '+HH:MM'
     })
     conn.connect();
     return new Promise((resolve, reject) => {

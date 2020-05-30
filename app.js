@@ -10,12 +10,13 @@ app.listen(3007, () => console.log('开启服务器'));
 // 中间件
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static('uploads'));
 app.use(jwt({ secret: 'bigevent' }).unless({ path: /^\/api/ }))
 
 // 路由
 app.use('/api', require(path.join(__dirname, '/routers/login.js')));
+app.use('/my/category', require(path.join(__dirname, '/routers/category.js')));
 app.use('/my/article', require(path.join(__dirname, '/routers/article.js')));
-app.use('/my/article', require(path.join(__dirname, '/routers/category.js')));
 app.use('/my', require(path.join(__dirname, '/routers/user.js')));
 
 // 错误处理中间件
